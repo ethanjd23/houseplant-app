@@ -20,7 +20,7 @@ const App = (props: AppProps) => {
 
 	return (
 		<main className="container my-5">
-			<h1 className="text-primary text-center">Hello {greeting}!</h1>
+			<h1 className="text-primary text-center">This is the {greeting} branch!</h1>
 		</main>
 	);
 };
