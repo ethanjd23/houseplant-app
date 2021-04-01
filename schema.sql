@@ -13,7 +13,7 @@ CREATE TABLE users (
 create table plants (
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    water INT,
-   sunlight VARCHAR (5) NOT NULL,
+   sunlight VARCHAR (25) NOT NULL,
    _created TIMESTAMP DEFAULT NOW()
 );
 
