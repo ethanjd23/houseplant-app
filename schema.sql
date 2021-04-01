@@ -1,47 +1,40 @@
-create database plants;
-use plants;
+CREATE SCHEMA plants;
+USE plants;
 
-
-
-create table User (
+CREATE TABLE users (
    id int not null auto_increment primary key,
    username varchar(100) not null,
    email varchar(100) not null,
-   password varchar (100) not null,
-   _created datetime default current_timestamp
+   password varchar(100) not null,
+   role VARCHAR(25) NOT NULL DEFAULT "guest",
+   _created TIMESTAMP DEFAULT NOW()
 );
 
+create table plants (
+   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   water INT,
+   sunlight VARCHAR (5) NOT NULL,
+   _created TIMESTAMP DEFAULT NOW()
+);
 
 create table userplants (
-   userid int not null,
-   userplant int not null,
-   _created datetime default current_timestamp,
-   primary key (userid, userplant),
-   foreign key (userid) references user(id)
+   userid INT NOT NULL,
+   plantid INT NOT NULL,
+   plant_name TEXT,
+   _created TIMESTAMP DEFAULT NOW(),
+   primary key (userid, plantid),
+   foreign key (userid) references users(id),
+	foreign key (plantid) REFERENCES plants(id)
 );
-ALTER TABLE userplants
-  ADD FOREIGN KEY (userplant) REFERENCES plantsInformation(plantsid);
-
-create table plantsInformation (
-   plantsid int not null,
-   waterPlants varchar (100) not null,
-   sunlight varchar (100) not null,
-   turningPlants varchar (100) not null,
-   _created datetime default current_timestamp,
-    foreign key (plantsid) references userplants(userid)
-);
-
-
-
-CREATE USER 'plants'@'localhost' IDENTIFIED BY 'plants123';
-GRANT ALL PRIVILEGES ON plants.* TO 'plants'@'localhost';
 
 create table tokens (
   id int not null auto_increment primary key,
-  User int not null,
+  userid int not null,
   token text,
-  userid int,
-  expires datetime,
+  expires TIMESTAMP,
   _created datetime default current_timestamp,
-   constraint fk_tokens_user foreign key (userid) references User(id)
+   FOREIGN KEY (userid) REFERENCES users(id)
 );
+
+CREATE USER 'plants'@'localhost' IDENTIFIED BY 'plants123';
+GRANT ALL PRIVILEGES ON plants.* TO 'plants'@'localhost';
