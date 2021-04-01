@@ -1,4 +1,6 @@
 import * as express from "express";
+import * as jwt from "jsonwebtoken";
+import config from "../../config";
 
 import db from '../../db';
 
@@ -7,6 +9,16 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
+        const bearerToken = req.headers.authorization?.split(' ');
+        const token = bearerToken && bearerToken[0] === 'Bearer' ? bearerToken[1] : null;
+        console.log(token);
+        if (!bearerToken || !token) {
+            res.sendStatus(401);
+            return;
+        }
+
+        const payload = jwt.verify(token, config.auth.secret);
+        console.log(payload);
         res.json(await db.plantsDB.getAll());
     } catch (error) {
         console.log(error);
