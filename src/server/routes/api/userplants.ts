@@ -6,12 +6,14 @@ import db from '../../db';
 const router = express.Router();
 
 router.get('/id', async (req, res) => {
-    let plantid = Number(req.params.id);
+    let userid = Number(req.params.id);
     try {
-        res.json(await db.plantsinformationDB.getOne(plantid))
+        res.json(await db.userplantsDB.getUserPlants(userid));
     } catch (error) {
         console.log(error);
+        res.sendStatus(500);
     }
 })
+
 
 export default router;

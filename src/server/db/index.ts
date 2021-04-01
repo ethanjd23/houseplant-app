@@ -1,7 +1,8 @@
 import * as mysql from 'mysql';
 
 import config from '../config';
-import plantsinformationDB from './plantsInformation'
+import plantsDB from './plants'
+import userplantsDB from './userplants';
 
 export const pool = mysql.createPool(config.mysql)
 
@@ -15,5 +16,6 @@ export const Query = (query: string, values?: Array<string | number>) => {
 };
 
 export default {
-    plantsinformationDB
+    plantsDB,
+    userplantsDB
 }
