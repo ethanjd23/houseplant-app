@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
         res.json(await db.plantsDB.getAll());
     } catch (error) {
         console.log(error);
-        res.sendStatus(500).json({"errormsg": error});
+        res.sendStatus(500).json({errormsg: error});
     }
 })
 

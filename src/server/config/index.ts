@@ -14,8 +14,7 @@ export default {
         password: "plants123",
         database: "plants"
     },
-    port: parseInt(process.env.PORT, 10),
     auth: {
-        secret: process.env.AUTH_SECRET
+        secret: "dev-dont-care-env-later"
     }
 }
