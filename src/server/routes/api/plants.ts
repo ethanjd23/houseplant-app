@@ -1,13 +1,14 @@
 import * as express from "express";
+import { authenticate } from 'passport'
 
 import db from '../../db';
+import { ReqUser } from "../../db/models";
 import { validateToken } from '../../utils/bearerStrategy';
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", authenticate('jwt'), async (req: ReqUser, res) => {
     try {
-        validateToken(req, res);
         res.json(await db.plantsDB.getAll());
     } catch (error) {
         console.log(error);
@@ -24,6 +25,5 @@ router.get('/id', async (req, res) => {
         res.sendStatus(500);
     }
 })
-
 
 export default router;

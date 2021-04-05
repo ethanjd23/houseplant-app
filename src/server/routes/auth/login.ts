@@ -1,29 +1,21 @@
 import * as express from "express";
 import * as jwt from "jsonwebtoken";
+import { authenticate } from 'passport';
 
-import db from "../../db";
 import config from "../../config";
-import { compareHash } from "../../utils/passwords";
+import { ReqUser } from "../../db/models";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const username = req.body.username;
-  try {
-    // check for the user's email
-    const [userFound] = await db.usersDB.find("email", email);
-    // Comparing password entered with DB
-    if (userFound && compareHash(password, userFound.password)) {
+router.post("/", authenticate('local'), async (req: ReqUser, res) => {
+    try {
       const token = jwt.sign(
-        { userid: userFound.id, email: userFound.email, role: userFound.role },
+          //@ts-ignore
+        { userid: req.user.id, email: req.user.email, role: req.user.role },
         config.auth.secret
       );
       res.json(token);
-      return;
-    }
-    res.send(401).json({ message: "Invalid credentials" });
+    res.json("plz");
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

@@ -1,3 +1,9 @@
+import { Request } from 'express';
+
+export interface ReqUser extends Request {
+    user?: UsersTable | Payload;
+}
+
 export interface UsersTable {
     id?: number;
     username?: string;
@@ -10,5 +16,10 @@ export interface UsersTable {
 export interface MysqlResponse {
     affectedRows: number;
     insertId: number;
+}
 
+export interface Payload {
+    userid: number;
+    email: string;
+    role: string;
 }
