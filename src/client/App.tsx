@@ -9,7 +9,7 @@ const App = (props: AppProps) => {
 	useEffect(() => {
 		async function getGreeting() {
 			try {
-				const res = await fetch('/api/hello');
+				const res = await fetch('/api/hey');
 				const greeting = await res.json();
 				setGreeting(greeting);
 			} catch (error) {
