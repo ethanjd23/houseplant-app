@@ -19,7 +19,8 @@ router.get("/", async (req, res) => {
 router.get('/:id', async (req, res) => {
     let plantid = Number(req.params.id);
     try {
-        res.json(await db.plantsDB.getOne(plantid))
+        let [plant] = await db.plantsDB.getOne(plantid) 
+        res.json(plant);
     } catch (error) {
         console.log(error);
         res.sendStatus(500);

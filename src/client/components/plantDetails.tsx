@@ -1,23 +1,40 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from "react";
 
-const plantDetails: FunctionComponent<plantDetailsProps> = props => {
-    const [plant, setPlant] = useState({})
+const plantDetails: FunctionComponent<plantDetailsProps> = (props) => {
+  const [plant, setPlant] = useState("");
 
-    function getPlant () {
-        let plantInfo = fetch("")
-    }
+  useEffect(() => {
+    getPlant();
+  });
 
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  async function getPlant() {
+    let localPlantInfoRes = await fetch(`/api/plants/${props.plantid}`);
+    let treflePlantInfo = await fetch(
+      `https://trefle.io/api/v1/plants/search?token=FZ-NNMVZIvfyiwe_kiwEn_hRBG8PDOmNQx1myC2KeGs&q=${
+        localPlantInfoRes.name.split(" ")[0]
+      }`
+    );
+    setPlant(treflePlantInfo);
+  }
 
-export default plantDetails
+  return (
+    <>
+      <h1>{plant}</h1>
+    </>
+  );
+};
+
+export default plantDetails;
 
 interface plantDetailsProps {
-    userid: number;
-    plantid: number;
+  userid: number;
+  plantid: number;
+  plant_name: string;
+}
 
+interface plantInfoFromSQL extends Response {
+  id: number;
+  name: string;
+  water: string;
+  sunlight: number;
 }
