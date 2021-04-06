@@ -10,12 +10,10 @@ const router = express.Router();
 router.post("/", authenticate('local'), async (req: ReqUser, res) => {
     try {
       const token = jwt.sign(
-          //@ts-ignore
         { userid: req.user.id, email: req.user.email, role: req.user.role },
         config.auth.secret
       );
       res.json(token);
-    res.json("plz");
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

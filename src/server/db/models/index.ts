@@ -18,8 +18,6 @@ export interface MysqlResponse {
     insertId: number;
 }
 
-export interface Payload {
-    userid: number;
-    email: string;
-    role: string;
+export interface Payload extends UsersTable {
+    userid?: number;
 }
