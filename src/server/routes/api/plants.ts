@@ -1,13 +1,12 @@
 import * as express from "express";
 
 import db from '../../db';
-import { validateToken } from '../../utils/bearerStrategy';
+import { ReqUser } from "../../db/models";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", async (req: ReqUser, res) => {
     try {
-        validateToken(req, res);
         res.json(await db.plantsDB.getAll());
     } catch (error) {
         console.log(error);
@@ -24,6 +23,5 @@ router.get('/id', async (req, res) => {
         res.sendStatus(500);
     }
 })
-
 
 export default router;

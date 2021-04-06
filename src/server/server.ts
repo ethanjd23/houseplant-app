@@ -1,13 +1,13 @@
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as path from 'path';
-import * as passport from 'passport';
-
 
 import routes from './routes';
+import { configurePassport } from './middlewares/passport-strategies.mw';
 
 const app = express();
 
+configurePassport(app);
 app.use(express.static('public'));
 app.use(express.json());
 

@@ -7,7 +7,7 @@ import usersDB from './users';
 
 export const pool = mysql.createPool(config.mysql)
 
-export const Query = <T = any>(query: string, values?: Array<string | number>) => {
+export const Query = <T = any>(query: string, values?: Array<string | number> | object) => {
     return new Promise<T>((resolve, reject) => {
         pool.query(query, values, (err, result) => {
             if(err) throw err;

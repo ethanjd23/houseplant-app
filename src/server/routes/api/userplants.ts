@@ -1,4 +1,5 @@
 import * as express from "express";
+import { authenticate } from "passport";
 
 import db from '../../db';
 
