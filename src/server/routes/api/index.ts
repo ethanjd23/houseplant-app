@@ -2,7 +2,6 @@ import * as express from 'express';
 
 import plantsRouter from './plants'
 import userplantsRouter from './userplants'
-import trefleRouter from './trefle';
 
 const router = express.Router();
 
