@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
+import $ from 'jquery'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -126,7 +127,7 @@ const Login = () => {
 //     }
 //   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
       let user = {
         email: state.username,
         password: state.password
@@ -139,8 +140,7 @@ const Login = () => {
         contentType: "application/json"
     }).then(response => {console.log(response)
     }
-    
-};
+    )};
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.keyCode === 13 || event.which === 13) {
