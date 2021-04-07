@@ -1,69 +1,22 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import * as React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Login from "./components/login";
+import PlantDetails from "./components/plantDetails";
+import Home from "./pages/Home";
+import Forum from "./pages/Forum";
+import Schedule from "./pages/Schedule";
 
-
-/* HOOK REACT EXAMPLE */
-const App = (props: AppProps) => {
-	const [greeting, setGreeting] = useState<string>('');
-
-	useEffect(() => {
-		async function getGreeting() {
-			try {
-				const res = await fetch('/api/hello');
-				const greeting = await res.json();
-				setGreeting(greeting);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-		getGreeting();
-	}, []);
-
-	return (
-		<main className="container my-5">
-			<h1 className="text-primary text-center">This is the {greeting} branch!</h1>
-		</main>
-	);
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/forum" component={Forum} />
+        <Route path="/schedule" component={Schedule} />
+        <Route exact path="/login" component={Login} />
+      </Switch>
+    </BrowserRouter>
+  );
 };
 
-interface AppProps {}
-
-/* CLASS REACT EXAMPLE */
-// class App extends React.Component<IAppProps, IAppState> {
-// 	constructor(props: IAppProps) {
-// 		super(props);
-// 		this.state = {
-// 			name: null
-// 		};
-// 	}
-
-// 	async componentDidMount() {
-// 		try {
-// 			let r = await fetch('/api/hello');
-// 			let name = await r.json();
-// 			this.setState({ name });
-// 		} catch (error) {
-// 			console.log(error);
-// 		}
-// 	}
-
-// 	render() {
-// 		return (
-// 			<main className="container my-5">
-// 				<h1 className="text-primary text-center">Hello {this.state.name}!</h1>
-// 			</main>
-// 		);
-// 	}
-// }
-
-// export interface IAppProps {}
-
-// export interface IAppState {
-// 	name: string;
-// }
-
 export default App;
-
-
-
-
