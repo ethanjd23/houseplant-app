@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
@@ -111,19 +112,35 @@ const Login = () => {
     }
   }, [state.username, state.password]);
 
+//   const handleLogin = () => {
+//     if (state.username === 'abc@email.com' && state.password === 'password') {
+//       dispatch({
+//         type: 'loginSuccess',
+//         payload: 'Login Successfully'
+//       });
+//     } else {
+//       dispatch({
+//         type: 'loginFailed',
+//         payload: 'Incorrect username or password'
+//       });
+//     }
+//   };
+
   const handleLogin = () => {
-    if (state.username === 'abc@email.com' && state.password === 'password') {
-      dispatch({
-        type: 'loginSuccess',
-        payload: 'Login Successfully'
-      });
-    } else {
-      dispatch({
-        type: 'loginFailed',
-        payload: 'Incorrect username or password'
-      });
+      let user = {
+        email: state.username,
+        password: state.password
+
+      }
+    $.ajax({
+        type: "POST",
+        url: "/auth/login",
+        data: JSON.stringify(user),
+        contentType: "application/json"
+    }).then(response => {console.log(response)
     }
-  };
+    
+};
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.keyCode === 13 || event.which === 13) {
