@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 
 const useStyles = makeStyles({
   card: {
@@ -24,6 +26,11 @@ export default function Question (props) {
   const { question } = props
 
   return (
+    
+    
+    
+    
+    
     <Grid item sm={12} md={12}>
       <CardActionArea component="a" href={`/${question.Topic.title}/${question.id}`}>
         <Card className={classes.card}>
@@ -52,3 +59,21 @@ export default function Question (props) {
 Question.propTypes = {
   question: PropTypes.object
 }
+
+const useStyles = makeStyles(theme => ({
+    offset: theme.mixins.toolbar,
+  }))
+  
+  function App() {
+    const classes = useStyles();
+    return (
+      <React.Fragment>
+        <AppBar position="fixed">
+          <Toolbar>{"Forum"}</Toolbar>
+        </AppBar>
+        <div className={classes.offset} />
+      </React.Fragment>
+    )
+  };
+
+

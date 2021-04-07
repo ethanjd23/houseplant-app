@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack')
 
 const serverConfig = {
 	mode: process.env.NODE_ENV || 'development',
@@ -50,6 +51,14 @@ const clientConfig = {
 			}
 		]
 	},
+	plugins: [
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			"window.jQuery": "jquery",
+			"window.$": "jquery"
+		})
+	],
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js', '.css', '.scss']
 	},
