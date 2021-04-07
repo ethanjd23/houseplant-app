@@ -38,3 +38,5 @@ create table tokens (
 
 CREATE USER 'plants'@'localhost' IDENTIFIED BY 'plants123';
 GRANT ALL PRIVILEGES ON plants.* TO 'plants'@'localhost';
+
+ALTER TABLE users ADD UNIQUE(email);
