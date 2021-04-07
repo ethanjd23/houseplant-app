@@ -1,13 +1,29 @@
 import * as express from 'express';
+import db from './db';
 
 const router = express.Router();
 
-router.get('/api/hello', (req, res, next) => {
-    res.json('Main');
+
+router.get('/api/plants', async (req, res) => {
+    try {
+        let plants = await DB.plants.getAll();
+        res.json(plants);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/api/plants/:id', async (req, res) => {
+    try {
+        let plants = await DB.plants.getOne(req.params.id);
+        res.json(plants);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
 });
 
 
 
-
->>>>>>> f271f21d96233748d01b529079431c98880a39ce
 export default router;
