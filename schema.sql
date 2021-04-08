@@ -12,8 +12,9 @@ CREATE TABLE users (
 
 create table plants (
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   name TEXT NOT NULL,
    water INT,
-   sunlight VARCHAR (25) NOT NULL,
+   sunlight VARCHAR(25) NOT NULL,
    _created TIMESTAMP DEFAULT NOW()
 );
 
@@ -36,7 +37,38 @@ create table tokens (
    FOREIGN KEY (userid) REFERENCES users(id)
 );
 
+CREATE TABLE posts (
+id INT NOT NULL AUTO_INCREMENT,
+userid INT NOT NULL,
+plantid INT,
+title TEXT NOT NULL, 
+content TEXT,
+_created TIMESTAMP DEFAULT NOW(),
+PRIMARY KEY (id),
+FOREIGN KEY (userid) REFERENCES users(id),
+FOREIGN KEY (plantid) REFERENCES plants(id)
+);
+
+CREATE TABLE replies (
+id INT NOT NULL AUTO_INCREMENT,
+userid INT NOT NULL, 
+content TEXT NOT NULL, 
+_created TIMESTAMP DEFAULT NOW(),
+PRIMARY KEY (id),
+FOREIGN KEY (userid) REFERENCES users(id)
+);
+
+CREATE TABLE postreplies (
+postid INT NOT NULL,
+replyid INT NOT NULL,
+PRIMARY KEY (postid, replyid),
+FOREIGN KEY (postid) REFERENCES posts(id),
+FOREIGN KEY (replyid) REFERENCES replies(id)
+);
+
+DROP USER 'plants'@'localhost';
+FLUSH PRIVILEGES;
+
 CREATE USER 'plants'@'localhost' IDENTIFIED BY 'plants123';
 GRANT ALL PRIVILEGES ON plants.* TO 'plants'@'localhost';
-
 ALTER TABLE users ADD UNIQUE(email);
