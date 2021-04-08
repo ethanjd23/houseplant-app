@@ -4,6 +4,7 @@ import config from '../config';
 import plantsDB from './plants'
 import userplantsDB from './userplants';
 import usersDB from './users';
+import forumDB from './forum';
 
 export const pool = mysql.createPool(config.mysql)
 
@@ -19,5 +20,6 @@ export const Query = <T = any>(query: string, values?: Array<string | number> | 
 export default {
     plantsDB,
     userplantsDB,
-    usersDB
+    usersDB,
+    forumDB
 }
