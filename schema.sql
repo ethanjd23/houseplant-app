@@ -66,6 +66,10 @@ FOREIGN KEY (postid) REFERENCES posts(id),
 FOREIGN KEY (replyid) REFERENCES replies(id)
 );
 
+
+ALTER TABLE users
+MODIFY username TEXT NOT NULL;
+
 DROP USER 'plants'@'localhost';
 FLUSH PRIVILEGES;
 
