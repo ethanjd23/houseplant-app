@@ -13,9 +13,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Home/:JWT" component={Home} />
         {/* <Route path="/forum" component={Forum} /> */}
-        <Route path="/schedule" component={Schedule} />
+        <Route exact path="/schedule" component={Schedule} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/test/:postid" component={ForumDetails} />
         <Route exact path="/test" component={forumPage} />

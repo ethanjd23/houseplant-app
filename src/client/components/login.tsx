@@ -126,8 +126,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
         data: JSON.stringify(user),
         contentType: "application/json"
     }).then(response => {
-      console.log(response)
-      props.history.push("/");
+      props.history.push(`/Home/${response.userid}`);
     }
     )};
 
