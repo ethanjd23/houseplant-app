@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Schedule from "./pages/Schedule";
 import forumPage from "./components/EthanTestComponents/forumPage";
 import ForumDetails from "./components/EthanTestComponents/ForumDetails";
+import Register from "./components/Register";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/test/:postid" component={ForumDetails} />
         <Route exact path="/test" component={forumPage} />
+        <Route exact path="/register" component={Register} />
       </Switch>
     </BrowserRouter>
   );

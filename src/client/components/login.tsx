@@ -7,7 +7,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import $ from 'jquery';
-import { RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import Register from './Register';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -194,6 +195,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
           </Button>
         </CardActions>
       </Card>
+      <Link to={"/register"}>Not a member? Sign up!</Link>
     </form>
   );
 }

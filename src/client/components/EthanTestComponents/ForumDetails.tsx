@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
-import ForumPost from './ForumPost';
+import ForumPost, { ForumPostProps } from './ForumPost';
 import Reply from './Reply';
 
 const ForumDetails: React.FunctionComponent<ForumDetailsProps> = (props) => {

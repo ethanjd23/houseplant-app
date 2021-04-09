@@ -12,9 +12,9 @@ const ForumPost: React.FunctionComponent<ForumPostProps> = ({ post }) => {
   );
 };
 
-interface ForumPostProps {
+export interface ForumPostProps {
   post: {
-      id: number;
+    id: number;
     userid: number;
     plantid: number;
     title: string;
