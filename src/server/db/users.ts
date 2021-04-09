@@ -1,7 +1,7 @@
 import { Query } from "./index";
 import { MysqlResponse, UsersTable } from "./models/index";
 
-const find = (column: string, value: string) =>
+const find = (column: string, value: string | number) =>
   Query<UsersTable[]>("SELECT * FROM users WHERE ?? = ?", [column, value]);
 
 const insert = (newUser: {email: string, password: string, username: string}) =>
