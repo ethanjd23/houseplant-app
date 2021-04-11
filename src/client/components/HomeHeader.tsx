@@ -75,7 +75,7 @@ export default function Header() {
             Welcome to <br />
             House<span className={classes.colorText}>Plant.</span>
           </h1>
-          <h3 className={classes.subtitle}>A interactive website that helps you become a better house plant owner</h3>
+          <h3 className={classes.subtitle}>A interactive website that helps you become a better house plant owner.</h3>
           <Scroll to="place-to-visit" smooth={true}>
             <IconButton>
               <ExpandMoreIcon className={classes.goDown} />
