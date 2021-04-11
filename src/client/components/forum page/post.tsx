@@ -1,10 +1,10 @@
 import React, { KeyboardEvent, useEffect, useState } from "react";
-import { CommentItem } from "./CommentItem";
+import { CommentItem } from "./comment";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge } from "@material-ui/core";
 
 import '../sass/styles.scss'
-import { getComments, postComment } from "../redux/comments";
+// import { getComments, postComment } from "../redux/comments";
 
 const ENTER = "Enter";
 
@@ -16,7 +16,7 @@ export const ForumApp = () => {
     const comments = useSelector((store : any) => store.comments.comments)
 
     useEffect(() => {
-        dispatch(getComments())
+        // dispatch(getComments())
     },[dispatch])
 
     const handleEnter = (e: KeyboardEvent) => {
@@ -27,7 +27,7 @@ export const ForumApp = () => {
     };
 
     const makeComment = () => {
-        dispatch(postComment(comment))
+        // dispatch(postComment(comment))
         setComment("")
     };
 
@@ -52,7 +52,7 @@ export const ForumApp = () => {
                         <CommentItem key={comment._id} data={comment} />
                     ))
                 }
-                <h1><Badge variant="secondary">common names</Badge></h1>
+                <h1><Badge color="secondary">common names</Badge></h1>
             </div>
         </div>
     )

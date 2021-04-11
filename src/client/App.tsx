@@ -15,14 +15,13 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/Home/:userid" component={Home} />
         {/* <Route path="/forum" component={Forum} /> */}
         <Route exact path="/schedule" component={Schedule} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/test/:postid" component={ForumDetails} />
         <Route exact path="/test" component={forumPage} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/myPlants/:userid" component={UserPlants} />
+        <Route exact path="/myplants/:userid" component={UserPlants} />
       </Switch>
     </BrowserRouter>
   );

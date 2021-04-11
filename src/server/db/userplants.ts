@@ -2,7 +2,14 @@ import { Query } from "./index";
 import { MysqlResponse } from "./models";
 
 const getUserPlants = async (userid: number) =>
-  Query(`SELECT * FROM userplants WHERE userid = ?`, [userid]);
+  Query(
+    `SELECT userplants.plant_name, plants.name, users.username, plants.water, plants.sunlight
+	    FROM userplants 
+	    INNER JOIN plants ON userplants.plantid = plants.id
+      INNER JOIN users ON userplants.userid = users.id
+      WHERE userid = ?`,
+    [userid]
+  );
 
 const insert = (newPlants: {
   userid: number;

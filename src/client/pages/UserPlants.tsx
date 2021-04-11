@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import fetch from 'node-fetch';
 import { RouteComponentProps } from 'react-router-dom';
 
-const UserPlants: React.FunctionComponent<UserPlantsProps> = (props) => {
+const UserPlants: React.FunctionComponent<UserPlantsProps> = ({match}) => {
     const [userPlants, setUserPlants] = useState([]);
 
     useEffect(() => {
@@ -10,8 +10,8 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = (props) => {
     }, [])
 
     async function getUserPlants() {
-        let userPlantsRes = await fetch(`/api/userplants/${props.match.params.userid}`);
-        let userPlants = userPlantsRes.json();
+        let userPlantsRes = await fetch(`/api/userplants/${match.params.userid}`);
+        let userPlants: Promise<[{}]> = userPlantsRes.json();
         setUserPlants(await userPlants);
     }
 
@@ -31,6 +31,14 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = (props) => {
 
 interface UserPlantsProps extends RouteComponentProps {
     userid: number;
+}
+
+interface UserPlant {
+    plant_name: string;
+    name: string;
+    username: string;
+    water: number;
+    sunlight: string;
 }
 
 

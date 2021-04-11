@@ -5,7 +5,7 @@ import SortIcon from '@material-ui/icons/Sort';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles({
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     margin: '0 auto',
   },
   appbarTitle: {
-    flexGrow: '1',
+    flexGrow: 1,
   },
   icon: {
     color: '#fff',
@@ -45,7 +45,7 @@ const useStyles = makeStyles(() => ({
     color: 'white',
     fontSize: '1.5rem'
   }
-}));
+});
 export default function Header() {
   const classes = useStyles();
   const [checked, setChecked] = useState(false);
