@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 
 export default function HomeImageCard({ place, checked }) {
   const classes = useStyles();
-
+console.log(place);
   return (
     <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Card className={classes.root}>
