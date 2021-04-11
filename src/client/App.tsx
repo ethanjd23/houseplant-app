@@ -8,6 +8,7 @@ import Schedule from "./pages/Schedule";
 import forumPage from "./components/EthanTestComponents/forumPage";
 import ForumDetails from "./components/EthanTestComponents/ForumDetails";
 import Register from "./components/Register";
+import UserPlants from "./pages/UserPlants";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route exact path="/test/:postid" component={ForumDetails} />
         <Route exact path="/test" component={forumPage} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/myPlants/:userid" component={UserPlants} />
       </Switch>
     </BrowserRouter>
   );
