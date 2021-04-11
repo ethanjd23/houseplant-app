@@ -44,9 +44,14 @@ export function configurePassport(app: Application) {
         jwtFromRequest: PassportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
         secretOrKey: config.auth.secret,
       },
-      (payload: Payload, done) => {
+      async (payload: Payload, done) => {
         try {
-          done(null, payload);
+          const [userRecord] = await db.usersDB.find('id', payload.userid);
+          if(userRecord) {
+            done(null, userRecord);
+          } else {
+            done(null, false);
+          }
         } catch (error) {
           done(error);
         }

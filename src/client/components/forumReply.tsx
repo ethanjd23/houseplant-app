@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
+import fetch from 'node-fetch'
 
 
-const formDetails = () => {
+const forumReply: React.FunctionComponent<forumReplyProps> = (props) => {
     const [ reply, setReply ] = useState([]);
    
-
     useEffect (() => {
-        fetch ("/replies")
+        fetch (`/forum/replies${props.postid}`)
         .then((res) => res.json())
-        .then((allData) => setReply(allData));
+        .then((allReplies) => setReply(allReplies));
     }, []);
   return (
     <>
@@ -33,8 +33,10 @@ const formDetails = () => {
   );
 };
 
-
+interface forumReplyProps {
+  postid: number;
+}
 
   
 
-export default formDetails;
+export default forumReply;

@@ -13,7 +13,7 @@ router.post("/", authenticate('local'), async (req: ReqUser, res) => {
         { userid: req.user.id, email: req.user.email, role: req.user.role },
         config.auth.secret
       );
-      res.json(token);
+      res.json({userid: req.user.id});
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

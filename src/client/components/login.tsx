@@ -7,8 +7,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import $ from 'jquery';
-import { RouteComponentProps } from 'react-router-dom';
-import NavBar from 'NavBar';
+import { Link, RouteComponentProps } from 'react-router-dom';
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -126,8 +126,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
         data: JSON.stringify(user),
         contentType: "application/json"
     }).then(response => {
-      console.log(response)
-      props.history.push("/");
+      props.history.push(`/myplants/${response.userid}`);
     }
     )};
 
@@ -195,6 +194,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
           </Button>
         </CardActions>
       </Card>
+      <Link to={"/register"}>Not a member? Sign up!</Link>
     </form>
   );
 }

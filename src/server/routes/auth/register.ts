@@ -17,7 +17,7 @@ router.post("/", async (req: ReqUser, res) => {
       { userid: result.insertId, email: newUser.email, role: newUser.role },
       config.auth.secret
     );
-    res.json(token);
+    res.json(result.insertId);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

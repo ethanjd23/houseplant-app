@@ -31,7 +31,7 @@ export const SidebarData = [
   {
     title: 'Login',
     path: '/login',
-    icon: <FaIcons.FaSign/>,
+    icon: <FaIcons.FaSignInAlt/>,
     cName: 'nav-text'
   }
 ];
