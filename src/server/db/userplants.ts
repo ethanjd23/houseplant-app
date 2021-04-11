@@ -3,9 +3,9 @@ import { MysqlResponse } from "./models";
 
 const getUserPlants = async (userid: number) =>
   Query(
-    `SELECT userplants.plant_name, plants.name, users.username, plants.water, plants.sunlight
-	    FROM userplants 
-	    INNER JOIN plants ON userplants.plantid = plants.id
+    `SELECT userplants.plant_name AS nickname, plants.name, users.username, users.id AS userid, plants.water, plants.sunlight, plants.id AS plantid
+      FROM userplants 
+      INNER JOIN plants ON userplants.plantid = plants.id
       INNER JOIN users ON userplants.userid = users.id
       WHERE userid = ?`,
     [userid]

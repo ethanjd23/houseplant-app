@@ -26,4 +26,15 @@ router.post("/:id", async (req, res) => {
   }
 });
 
+router.delete("/", async (req, res) => {
+  let plant: {userid: number; plantid: number;} = req.body;
+  try {
+    let result = await db.userplantsDB.destroy(plant.userid, plant.plantid);
+    res.json(await result);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+})
+
 export default router;
