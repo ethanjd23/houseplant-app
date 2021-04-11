@@ -7,7 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { convertTypeAcquisitionFromJson } from "typescript";
 
 const useStyles = makeStyles({
   root: {
@@ -29,15 +28,27 @@ const PlantCard = ({ plant }) => {
 
   async function getTrefleData() {
     let result = await fetch(`/trefle/${plant.name}`);
-    console.log(await result);
     let plantInfo = await result.json();
-    console.log(plantInfo);
+    if(!plantInfo.data[0]) {
+      let searchWordArray = plant.name.split(' ');
+      let result = await fetch(`/trefle/${searchWordArray[0]}`);
+      let plantInfo = await result.json();
+      setTrefleData(plantInfo.data[0]);
+    } else {
     setTrefleData(await plantInfo.data[0]);
-    console.log(trefleData);
+  }
+  }
+
+  function waterGrammar() {
+    if(plant.water == 1) {
+      return "I need to be watered every day"
+    } else {
+      return `I need to be watered every ${plant.water} days`
+    }
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} key={plant.plant_name}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -51,16 +62,22 @@ const PlantCard = ({ plant }) => {
           <Typography variant="body2" color="textSecondary" component="p">
             {plant.name}
           </Typography>
+          <Typography variant="subtitle1" component="p">
+            I need {plant.sunlight} sunlight
+          </Typography>
+          <Typography variant="subtitle1" component="p">
+            {waterGrammar()}
+          </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      {/* <CardActions>
         <Button size="small" color="primary">
           Share
         </Button>
         <Button size="small" color="primary">
           Learn More
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };

@@ -11,11 +11,11 @@ const getUserPlants = async (userid: number) =>
     [userid]
   );
 
-const insert = (newPlants: {
+const insert = (newPlant: {
   userid: number;
   plantid: number;
   plant_name: string;
-}) => Query<MysqlResponse>("INSERT INTO userplants SET ?", newPlants);
+}) => Query<MysqlResponse>("INSERT INTO userplants SET ?", newPlant);
 
 const update = (plant_name: string, userid: number, plantid: number) =>
   Query(
