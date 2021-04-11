@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function () {
+export default function HomePlantInfo () {
   const classes = useStyles();
   const checked = useWindowPosition('header');
   return (

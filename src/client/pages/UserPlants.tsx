@@ -17,6 +17,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 import UserPlantCard from "../components/UserPlantCard";
+import Navbar from "../components/Navbar";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -93,6 +94,8 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
   }
 
   return (
+    <>
+    <Navbar />
     <Container className={classes.root}>
       {userPlants.map((plant) => (
         <UserPlantCard plant={plant} />
@@ -157,6 +160,7 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
         </Dialog>
       </div>
     </Container>
+    </>
   );
 };
 
