@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
@@ -9,7 +9,51 @@ import Button from '@material-ui/core/Button';
 import $ from 'jquery';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import Register from './Register';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { SidebarData } from './SidebarData';
+import './Navbar.css';
+import { IconContext } from 'react-icons';
 
+
+function Navbar() {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+
+  return (
+    <>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link to='#' className='menu-bars'>
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+        </div>
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <Link to='#' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
+  );
+}
+
+export default Navbar;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,7 +100,7 @@ const initialState:State = {
 type Action = { type: 'setUsername', payload: string }
   | { type: 'setPassword', payload: string }
   | { type: 'setIsButtonDisabled', payload: boolean }
-  | { type: 'loginSuccess', payload: string }
+  | { type: 'loginSuccess', payload: string } 
   | { type: 'loginFailed', payload: string }
   | { type: 'setIsError', payload: boolean };
 
@@ -199,4 +243,4 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
   );
 }
 
-export default Login;
+export default Login, Navbar;
