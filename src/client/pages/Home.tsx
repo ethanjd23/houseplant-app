@@ -12,7 +12,7 @@ const Home: React.FunctionComponent = (props) => {
     <>
     <Navbar />
     <HomeHeader />
-    <HomeImageCard />
+    <HomeImageCard checked={1000} place={{imageUrl: '../assets/Calthea', title: "Calthea", description: "A Calthea Plant"}} />
     <HomePlantInfo />
     <div className='home'>
       <h1>Home</h1>
