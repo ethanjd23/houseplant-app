@@ -134,7 +134,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = (props) => {
       contentType: "application/json",
     }).then((response) => {
       console.log(response);
-      props.history.push("/");
+      props.history.push(`/myplants/${response}`);
     });
   };
 
