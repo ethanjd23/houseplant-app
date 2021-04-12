@@ -8,7 +8,6 @@ import { generateHash } from './utils/passwords';
 
 const app = express();
 
-generateHash("12345")
 
 configurePassport(app);
 app.use(express.static('public'));

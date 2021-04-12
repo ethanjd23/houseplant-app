@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { CommentItem } from '../components/forum page/comment';
-import { CommentChain } from '../components/forum page/post'
+import { CommentItem } from '../components/forum page/CommentItem';
+import { Comments } from '../components/forum page/Comments'
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
-import ForumPost from '../components/forum page/forumPost';
+import ForumPost from '../components/forum page/forumPostCard';
 import Reply from '../components/forum page/reply';
 
 
-function Forum() {
+const Forum: React.FunctionComponent<RouteComponentProps> = ({match}) => {
   return (
     <>
-    <CommentChain />
-    <CommentItem />
-    <ForumDetails />
+    
+    <Comments postid={match.params.userid} /> 
+    {/* Gets all the comments */}    
     </>
   );
 }
 
-const ForumDetails: React.FunctionComponent = (props) => {
+const ForumDetails: React.FunctionComponent<RouteComponentProps> = (props) => {
     const [post, setPost] = useState ({});
     const [replies, setReplies] = useState([]);
 

@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-// import { deleteComment, updateComment } from "../redux/comments";
 
 export const CommentItem = ({data} : any) => {
 
     const [onEdit, setOnEdit] = useState(false)
     const [text, setText] = useState(data.content)
-
-    // const dispatch = useDispatch()
 
     const handleEdit = () => {
         if(onEdit){
@@ -22,14 +18,12 @@ export const CommentItem = ({data} : any) => {
         setOnEdit(false)
     }
 
-    const upComment = async () => {
-        // dispatch(updateComment(data, text))
-        setOnEdit(false)
-    }
+    // const upComment = async () => {]    ]]
+    //     setOnEdit(false)
+    // }
 
-    const delComment = async () => {
-        // dispatch(deleteComment(data._id))
-    }
+    // const delComment = async () => {        
+    // }
 
     return (
         <div className="comment-item animate__animated animate__fadeInLeft">
