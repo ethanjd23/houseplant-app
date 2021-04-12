@@ -10,6 +10,7 @@ import ForumDetails from "./components/EthanTestComponents/ForumDetails";
 import Register from "./components/Register";
 import UserPlants from "./pages/UserPlants";
 
+
 const App = () => {
   return (
     <BrowserRouter>
