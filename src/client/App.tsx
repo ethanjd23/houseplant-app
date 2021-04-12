@@ -16,7 +16,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/forum/:userid" component={Forum} />
+        <Route exact path="/forum/:userid" component={Forum} />
         <Route exact path="/schedule" component={Schedule} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/test/:postid" component={ForumDetails} />
