@@ -9,7 +9,7 @@ const getAll = async () =>
 
 const getOne = async (id: number) =>
   Query(
-    `SELECT posts.title, posts.content, posts._created, plants.name, users.username
+    `SELECT posts.id posts.title, posts.content, posts._created, plants.name, users.username
         FROM posts
         INNER JOIN plants ON posts.plantid = plants.id
         INNER JOIN users ON posts.userid = users.id
