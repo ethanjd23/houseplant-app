@@ -1,13 +1,14 @@
 import React, { KeyboardEvent, useEffect, useState } from "react";
-import { CommentItem } from "./comment";
+import { CommentItem } from "./CommentItem";
 import fetch from 'node-fetch';
 import { Badge } from "@material-ui/core";
 
 const ENTER = "Enter";
 
 
-export const CommentChain = (props) => {
-    const [comment, setComment] = useState([])    
+export const Comments = (props) => {
+    const [comments, setComments] = useState([])    
+    const [newCommentContent, setNewCommentContent] = useState('')
 
     useEffect(() => {
         getComments()
@@ -23,11 +24,11 @@ export const CommentChain = (props) => {
     async function getComments() {
         let result = await fetch (`/forum/replies/${props.postid}`);
         let replies = await result.json();
-        setComment(await replies);
+        setComments(await replies);
     };
 
     async function postComment() {
-        let newComment = {userid: props.userid, content: comment};
+        let newComment = {userid: props.userid, content: comments};
         $.ajax({
             method: 'POST',
             url: `/forum/replies/${props.postid}`,
@@ -47,20 +48,20 @@ export const CommentChain = (props) => {
                 <h1>Post your comment</h1>
                 <textarea
                     placeholder="Write something to us"
-                    onChange={(e) => setComment(e.target.value)}
+                    onChange={(e) => setNewCommentContent(e.target.value)}
                     onKeyDown={handleEnter}
-                    value={comment}
+                    value={comments}
                 ></textarea>
                 <br />
                 <button onClick={postComment}>Post Comment</button>
             </div>
             <div className="comments-display">
                 {
-                    comment.map((comment : any) => (
+                    comments.map((comment : any) => (
                         <CommentItem key={comment._id} data={comment} />
                     ))
                 }
-                <h1><Badge color="secondary">common names</Badge></h1>
+                {/* <h1><Badge color="secondary">common names</Badge></h1> */}
             </div>
         </div>
     )
