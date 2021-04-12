@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import fetch from "node-fetch";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -48,6 +48,7 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
   const [plantType, setPlantType] = useState("");
   const [selectOpen, setSelectOpen] = useState(false);
   const [newNickname, setNewNickname] = useState("");
+  const [newNote, setNewNote] = useState("");
 
   const handleSelectChange = (event) => {
     setPlantType(event.target.value);
@@ -74,6 +75,7 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
       userid: match.params.userid,
       plantid: plantType,
       plant_name: newNickname,
+      notes: newNote
     };
     console.log(newPlant);
     $.ajax({
@@ -119,6 +121,7 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
           >
             ADD NEW PLANT
           </Button>
+          <Link to={`/forum`}>Go to forum</Link>
         </Grid>
       </Grid>
       <Dialog
@@ -164,6 +167,15 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
             type="text"
             fullWidth
             onChange={(e) => setNewNickname(e.target.value)}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="Notes"
+            label="Notes"
+            type="text"
+            fullWidth
+            onChange={(e) => setNewNote(e.target.value)}
           />
         </DialogContent>
         <DialogActions>

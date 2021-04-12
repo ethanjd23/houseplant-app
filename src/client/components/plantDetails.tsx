@@ -7,19 +7,6 @@ const plantDetails: FunctionComponent = (props) => {
     getPlant();
   });
 
-  async function getPlant() {
-    // let localPlantInfoRes = await fetch(`/api/plants/${props.plantid}`);
-    // let treflePlantInfo = await fetch(
-    //   `https://trefle.io/api/v1/plants/search?token=FZ-NNMVZIvfyiwe_kiwEn_hRBG8PDOmNQx1myC2KeGs&q=${
-    //     localPlantInfoRes.name.split(" ")[0]
-    //   }`
-    // );
-    let treflePlantInfo = await fetch(
-      `https://trefle.io/api/v1/plants/search?token=FZ-NNMVZIvfyiwe_kiwEn_hRBG8PDOmNQx1myC2KeGs&q=Peace`
-    );
-    console.log(await treflePlantInfo.json());
-  }
-
   return (
     <>
       <h1>{plant}</h1>

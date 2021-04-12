@@ -69,13 +69,16 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
           <Typography gutterBottom variant="h5" component="h2">
             {plant.nickname}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="overline" color="textSecondary" component="p">
             {plant.name}
           </Typography>
-          <Typography variant="subtitle1" component="p">
+          <Typography variant="subtitle1" color="textSecondary" component="p">
+            {plant.notes}
+          </Typography>          
+          <Typography variant="subtitle2" component="p">
             I need {plant.sunlight} sunlight
           </Typography>
-          <Typography variant="subtitle1" component="p">
+          <Typography variant="subtitle2" component="p">
             {waterGrammar()}
           </Typography>
         </CardContent>
@@ -182,6 +185,7 @@ interface UserPlantCardProps {
     water: number;
     sunlight: string;
     plantid: number;
+    notes: string;
   };
 }
 
