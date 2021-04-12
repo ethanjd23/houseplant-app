@@ -4,8 +4,11 @@ import * as path from 'path';
 
 import routes from './routes';
 import { configurePassport } from './middlewares/passport-strategies.mw';
+import { generateHash } from './utils/passwords';
 
 const app = express();
+
+generateHash("12345")
 
 configurePassport(app);
 app.use(express.static('public'));

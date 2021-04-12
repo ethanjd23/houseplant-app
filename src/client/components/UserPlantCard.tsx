@@ -12,14 +12,15 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 345,
+      flexGrow: 1,
     },
     media: {
-      height: 140,
+      height: 280,
     },
     icon: {
       position: "absolute",
@@ -53,6 +54,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
   }, []);
 
   return (
+    <Grid item xs={5}>
     <Card className={classes.root} key={plant.nickname}>
       <CardActionArea>
         <button type="button" onClick={handleOpen} className={classes.icon}>
@@ -78,6 +80,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
+      
       {/* <CardActions>
         <Button size="small" color="primary">
           Share
@@ -124,6 +127,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
         </Fade>
       </Modal>
     </Card>
+    </Grid>
   );
 
   function handleOpen() {
