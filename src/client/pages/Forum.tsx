@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CommentItem } from '../components/forum page/comment';
-import { ForumApp } from '../components/forum page/post'
+import { CommentChain } from '../components/forum page/post'
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
 import ForumPost from '../components/forum page/forumPost';
@@ -10,7 +10,7 @@ import Reply from '../components/forum page/reply';
 function Forum() {
   return (
     <>
-    <ForumApp />
+    <CommentChain />
     <CommentItem />
     <ForumDetails />
     </>

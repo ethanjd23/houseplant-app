@@ -1,34 +1,43 @@
 import React, { KeyboardEvent, useEffect, useState } from "react";
 import { CommentItem } from "./comment";
-import { useDispatch, useSelector } from "react-redux";
+import fetch from 'node-fetch';
 import { Badge } from "@material-ui/core";
-
-// import { getComments, postComment } from "../redux/comments";
 
 const ENTER = "Enter";
 
 
-export const ForumApp = () => {
-    const [comment, setComment] = useState("")
-
-    const dispatch = useDispatch()
-    const comments = useSelector((store : any) => store.comments.comments)
+export const CommentChain = (props) => {
+    const [comment, setComment] = useState([])    
 
     useEffect(() => {
-        // dispatch(getComments())
-    },[dispatch])
+        getComments()
+    },[])
 
     const handleEnter = (e: KeyboardEvent) => {
         if (e.key === ENTER && !e.shiftKey) {
             e.preventDefault()
-            makeComment()
+            postComment()
         }
     };
 
-    const makeComment = () => {
-        // dispatch(postComment(comment))
-        setComment("")
+    async function getComments() {
+        let result = await fetch (`/forum/replies/${props.postid}`);
+        let replies = await result.json();
+        setComment(await replies);
     };
+
+    async function postComment() {
+        let newComment = {userid: props.userid, content: comment};
+        $.ajax({
+            method: 'POST',
+            url: `/forum/replies/${props.postid}`,
+            data: JSON.stringify(newComment),
+            contentType: "application/json"
+        }).then((response) => {
+            console.log(response);
+            getComments();
+        })
+    }
 
 
     return (
@@ -43,11 +52,11 @@ export const ForumApp = () => {
                     value={comment}
                 ></textarea>
                 <br />
-                <button onClick={makeComment}>Comment</button>
+                <button onClick={postComment}>Post Comment</button>
             </div>
             <div className="comments-display">
                 {
-                    comments.map((comment : any) => (
+                    comment.map((comment : any) => (
                         <CommentItem key={comment._id} data={comment} />
                     ))
                 }
