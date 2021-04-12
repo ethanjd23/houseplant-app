@@ -8,7 +8,7 @@ export const CommentItem = ({data} : any) => {
     const [onEdit, setOnEdit] = useState(false)
     const [text, setText] = useState(data.content)
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const handleEdit = () => {
         if(onEdit){
@@ -22,14 +22,14 @@ export const CommentItem = ({data} : any) => {
         setOnEdit(false)
     }
 
-    // const upComment = async () => {
-    //     dispatch(updateComment(data, text))
-    //     setOnEdit(false)
-    // }
+    const upComment = async () => {
+        // dispatch(updateComment(data, text))
+        setOnEdit(false)
+    }
 
-    // const delComment = async () => {
-    //     dispatch(deleteComment(data._id))
-    // }
+    const delComment = async () => {
+        // dispatch(deleteComment(data._id))
+    }
 
     return (
         <div className="comment-item animate__animated animate__fadeInLeft">
@@ -40,7 +40,7 @@ export const CommentItem = ({data} : any) => {
                 </div>
                 <div className="comment-options">
                     <i className="fas fa-edit" onClick={handleEdit}></i>
-                    {/* <i className="fas fa-trash" onClick={delComment}></i> */}
+                    <i className="fas fa-trash" onClick={delComment}></i>
                 </div>
             </div>
             {
@@ -48,7 +48,7 @@ export const CommentItem = ({data} : any) => {
                 (
                     <div className="comment-edit">
                         <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
-                        {/* <Button variant="primary" onClick={upComment}>Update</Button> */}
+                        <Button variant="primary" onClick={upComment}>Update</Button>
                         <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
                     </div>
                 )
