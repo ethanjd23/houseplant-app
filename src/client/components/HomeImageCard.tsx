@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     color: '#fff',
   },
   desc: {
-    fontFamily: 'Nunito',
+    fontFamily: 'Montserrat',
     fontSize: '1.1rem',
     color: '#ddd',
   },
