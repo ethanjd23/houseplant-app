@@ -2,7 +2,7 @@ import { Query } from "..";
 import { MysqlResponse } from "../models";
 
 const getAll = async () =>
-  Query(`SELECT posts.title, posts.content, posts._created, plants.name, users.username
+  Query(`SELECT posts.id, posts.title, posts.content, posts._created, plants.name, users.username
           FROM posts
           INNER JOIN plants ON posts.plantid = plants.id
           INNER JOIN users ON posts.userid = users.id`);
