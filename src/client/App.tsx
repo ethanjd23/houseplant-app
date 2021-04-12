@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/login";
 import PlantDetails from "./components/plantDetails";
 import Home from "./pages/Home";
-// import Forum from "./pages/Forum";
+import Forum from "./pages/Forum";
 import Schedule from "./pages/Schedule";
 import forumPage from "./components/EthanTestComponents/forumPage";
 import ForumDetails from "./components/EthanTestComponents/ForumDetails";
@@ -15,7 +15,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <Route path="/forum" component={Forum} /> */}
+        <Route path="/forum" component={Forum} />
         <Route exact path="/schedule" component={Schedule} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/test/:postid" component={ForumDetails} />

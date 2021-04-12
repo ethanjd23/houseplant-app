@@ -3,7 +3,6 @@ import { CommentItem } from "./comment";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge } from "@material-ui/core";
 
-import '../sass/styles.scss'
 // import { getComments, postComment } from "../redux/comments";
 
 const ENTER = "Enter";

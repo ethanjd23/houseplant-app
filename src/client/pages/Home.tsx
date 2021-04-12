@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: '/assets/homepic2.jpeg',
+    backgroundColor: 'teal',  // #fcf8eC
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     },
