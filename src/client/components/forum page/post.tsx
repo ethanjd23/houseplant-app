@@ -2,6 +2,7 @@ import React, { KeyboardEvent, useEffect, useState } from "react";
 import { CommentItem } from "./comment";
 import fetch from 'node-fetch';
 import { Badge } from "@material-ui/core";
+import { RouteComponenetProps } from 'react-router-dom';
 
 const ENTER = "Enter";
 
@@ -65,3 +66,4 @@ export const CommentChain = (props) => {
         </div>
     )
 }
+
