@@ -1,36 +1,74 @@
-import React, { useEffect, useState } from 'react'
-import { DataGrid, GridColDef, GridValueGetterParams, GridRowsProp } from '@material-ui/data-grid';
+import React, { useEffect, useState } from "react";
+import {
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  GridRowsProp,
+} from "@material-ui/data-grid";
+import useStateWithCallback from 'use-state-with-callback';
 
-const Forum2: React.FunctionComponent = () => {
-    const [posts, setPosts] = useState([])
-    const rows: GridRowsProp = [
-        { id: 1, col1: 'Hello', col2: 'World' },
-        { id: 2, col1: 'XGrid', col2: 'is Awesome' },
-        { id: 3, col1: 'Material-UI', col2: 'is Amazing' },
+
+const Forum2: React.FunctionComponent = () => {    
+    const [posts, setPosts] = useState([]);
+    const [rows, setRows] = useState([])
+
+    const rowsTest: GridRowsProp = [
+        { id: 1, username: 'Hello', plantName: 'World', created: 1, content: "idk", title: "idk" },
+        { id: 2, username: 'XGrid', plantName: 'is Awesome', created: 1, content: "idk", title: "idk" },
+        { id: 3, username: 'Material-UI', plantName: 'is Amazing', created: 1, content: "idk", title: "idk" },
       ];
-      
-      const columns: GridColDef[] = [
-        { field: 'col1', headerName: 'Column 1', width: 150 },
-        { field: 'col2', headerName: 'Column 2', width: 150 },
-      ];
 
-    useEffect(() => {
-        getPosts();
-    }, [])
+  useEffect(() => {
+      getPosts();
+  }, []);
 
+  const columns: GridColDef[] = [
+    { field: "username", headerName: "Username", width: 130 },
+    { field: "plantName", headerName: "Plant Name", width: 130 },
+    {
+      field: "created",
+      headerName: "Date of Post",
+      type: "number",
+      width: 90,
+    },
+    {
+      field: "title",
+      headerName: "Title",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
+    },
+    {
+      field: "content",
+      headerName: "Body",
+      type: "text",
+    },
+  ];
 
-    return (
-        
-    )
+  return (
+    <>
+      <div>
+        <DataGrid rows={rowsTest} columns={columns} />
+      </div>
+    </>
+  );
 
-
-
-    async function getPosts() {        
-        let postRes = await fetch(`/forum/posts/`);
-        let post = await postRes.json();
-        setPosts(post);
-        
-    }
+  async function getPosts() {
+    let postRes = await fetch(`/forum/posts/`);
+    let post = await postRes.json();
+    setPosts(post);
+    let postRowArray = await post.map((post) => ({
+        id: post.id,
+        username: post.username,
+        plantName: post.name,
+        created: post._created,
+        title: post.title,
+        content: post.content,
+      }))
+      console.log(postRowArray);
+    setRows(postRowArray);
+    
+};
 }
 
-export default Forum2
+export default Forum2;

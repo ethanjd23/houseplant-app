@@ -132,25 +132,25 @@ const columns: ColDef[] = [
   },
 ];
 
-const rows = [
-  { id: 1, plantName: plantid , username: userid, dateofPost: 1 },
-  { id: 2, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 3, plantName: plantid, username: userid, dateofPost: 1},
-  { id: 4, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 5, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 6, plantName: plantid, username: userid, dateofPost: 1},
-  { id: 7, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 8, plantName: plantid, username: userid, dateofPost: 1},
-  { id: 9, plantName: plantid, username: userid, dateofPost: 1 },
-];
+// const rows = [
+//   { id: 1, plantName: plantid , username: userid, dateofPost: 1 },
+//   { id: 2, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 3, plantName: plantid, username: userid, dateofPost: 1},
+//   { id: 4, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 5, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 6, plantName: plantid, username: userid, dateofPost: 1},
+//   { id: 7, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 8, plantName: plantid, username: userid, dateofPost: 1},
+//   { id: 9, plantName: plantid, username: userid, dateofPost: 1 },
+// ];
 
-export function DataTable() {
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-    </div>
-  );
-}
+// export function DataTable() {
+//   return (
+//     <div style={{ height: 400, width: '100%' }}>
+//       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+//     </div>
+//   );
+// }
 
 interface ForumPostProps {
   post: {
