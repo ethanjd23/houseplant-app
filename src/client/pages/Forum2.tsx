@@ -5,9 +5,9 @@ import {
   GridValueGetterParams,
   GridRowsProp,
 } from "@material-ui/data-grid";
-import useStateWithCallback from 'use-state-with-callback';
 import ForumPostCard from "../components/forum page/forumPostCard";
 import Navbar from "../components/Navbar";
+import { Container } from "@material-ui/core";
 
 
 const Forum2: React.FunctionComponent = () => {    
@@ -49,7 +49,9 @@ const Forum2: React.FunctionComponent = () => {
   return (
     <>
     <Navbar />
+    <Container>
       {posts.map((post) => <ForumPostCard post={post} />)}
+      </Container>
     </>
   );
 

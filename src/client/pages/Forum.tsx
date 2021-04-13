@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
 import ForumPostCard from '../components/forum page/forumPostCard';
 import Reply from '../components/forum page/reply';
-import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
+// import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { Comments } from '../components/forum page/Comments';
 
 const Forum: React.FunctionComponent<RouteComponentProps> = ({match}) => {
@@ -155,12 +155,12 @@ const columns: ColDef[] = [
 
 async function getUser() {
     let postsRes = await fetch("/forum/userid");
-    setUser(await postsRes.json());
+    // setUser(await postsRes.json());
 }
 
 async function getPlant() {
     let postsRes = await fetch("/forum/postid");
-    setPlant(await postsRes.json());
+    // setPlant(await postsRes.json());
 }
 
 interface ForumPostProps {
