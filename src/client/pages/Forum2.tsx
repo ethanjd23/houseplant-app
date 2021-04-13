@@ -72,18 +72,18 @@ const Forum2: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     <>
     <Navbar />
     <Container>
-      {posts.map((post) => <ForumPostCard post={post} />)}
       <Button onClick={handleOpen} variant="contained" color="secondary">Make New Post</Button>
+      {posts.map((post) => <ForumPostCard post={post} />)}
       </Container>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">New Plant</DialogTitle>
+        <DialogTitle id="form-dialog-title">New Post</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please choose the type of plant and its nickname.
+            What plant is your post about?
           </DialogContentText>
           <div>
             <FormControl className={classes.formControl}>
