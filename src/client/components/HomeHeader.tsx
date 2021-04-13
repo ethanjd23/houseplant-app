@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
+import { IconButton, Collapse } from '@material-ui/core';
 import SortIcon from '@material-ui/icons/Sort';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
@@ -15,16 +15,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     height: '100vh',
     fontFamily: 'Nunito',
-  },
-  appbar: {
-    background: 'none',
-  },
-  appbarWrapper: {
-    width: '80%',
-    margin: '0 auto',
-  },
-  appbarTitle: {
-    flexGrow: 1,
   },
   icon: {
     color: '#fff',
@@ -57,16 +47,12 @@ export default function Header() {
   }, []);
   return (
     <div className={classes.root} id="header">
-      <AppBar className={classes.appbar} elevation={0}>
-        <Toolbar className={classes.appbarWrapper}>
-          <h1 className={classes.appbarTitle}>
+      
+          <h1>
             <span className={classes.colorText}></span>
           </h1>
-          <IconButton>
-            
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+          
+      
 
       <Collapse
         in={checked}

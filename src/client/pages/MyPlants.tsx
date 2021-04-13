@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
+const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
   const classes = useStyles();
 
   const [userPlants, setUserPlants] = useState([]);
@@ -205,4 +205,4 @@ interface UserPlant {
   sunlight: string;
 }
 
-export default UserPlants;
+export default MyPlants;
