@@ -23,12 +23,6 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Request',
-    path: '/request',
-    icon: <FaIcons.FaEnvelopeOpenText />,
-    cName: 'nav-text'
-  },
-  {
     title: 'Login',
     path: '/login',
     icon: <FaIcons.FaSignInAlt/>,
