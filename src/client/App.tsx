@@ -22,6 +22,7 @@ const App = () => {
         <Route exact path="/test" component={forumPage} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/myplants/:userid" component={UserPlants} />
+        
       </Switch>
     </BrowserRouter>
   );
