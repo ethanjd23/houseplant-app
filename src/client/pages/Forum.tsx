@@ -153,6 +153,16 @@ export default function DataTable() {
   );
 }
 
+async function getUser() {
+    let postsRes = await fetch("/forum/userid");
+    setUser(await postsRes.json());
+}
+
+async function getPlant() {
+    let postsRes = await fetch("/forum/postid");
+    setPlant(await postsRes.json());
+}
+
 interface ForumPostProps {
   post: {
       id: number;
