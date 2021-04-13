@@ -83,9 +83,8 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
       url: `/api/userplants/${match.params.userid}`,
       data: JSON.stringify(newPlant),
       contentType: "application/json",
-    }).then(() => {
-      getUserPlants();
-      handleDialogClose();
+    }).then(() => {      
+      window.location.reload();      
     });
   };
 
@@ -188,7 +187,7 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
             Submit
           </Button>
         </DialogActions>
-      </Dialog>      
+      </Dialog>
     </>
   );
 };

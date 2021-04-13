@@ -150,6 +150,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
       contentType: "application/json" 
     }).then(response => {
       console.log(response);
+      window.location.reload();
       handleClose();
     })
   }
