@@ -21,7 +21,7 @@ const ForumDetails: React.FunctionComponent<ForumDetailsProps> = (props) => {
     )
 
     async function getPost() {
-        let postRes = await fetch(`/forum/posts/${props.match.params.postid}`);
+        let postRes = await fetch(`/forum/posts/`);
         let [post] = await postRes.json();
         setPost(post);
     }

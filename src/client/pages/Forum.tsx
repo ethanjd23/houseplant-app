@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
@@ -151,6 +152,16 @@ const columns: ColDef[] = [
 //     </div>
 //   );
 // }
+
+async function getUser() {
+    let postsRes = await fetch("/forum/userid");
+    setUser(await postsRes.json());
+}
+
+async function getPlant() {
+    let postsRes = await fetch("/forum/postid");
+    setPlant(await postsRes.json());
+}
 
 interface ForumPostProps {
   post: {
