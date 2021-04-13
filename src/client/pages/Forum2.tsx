@@ -18,7 +18,7 @@ const Forum2: React.FunctionComponent = () => {
         { id: 1, username: 'Hello', plantName: 'World', created: 1, content: "idk", title: "idk" },
         { id: 2, username: 'XGrid', plantName: 'is Awesome', created: 1, content: "idk", title: "idk" },
         { id: 3, username: 'Material-UI', plantName: 'is Amazing', created: 1, content: "idk", title: "idk" },
-      ];
+      ];git m
 
   useEffect(() => {
       getPosts();
