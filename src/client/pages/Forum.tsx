@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState, Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
-import ForumPost from '../components/forum page/forumPostCard';
+import ForumPostCard from '../components/forum page/forumPostCard';
 import Reply from '../components/forum page/reply';
 import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { Comments } from '../components/forum page/Comments';
@@ -27,7 +28,7 @@ const ForumDetails: React.FunctionComponent<RouteComponentProps> = (props) => {
 
     return (
         <>
-            <ForumPost post={post} />
+            <ForumPostCard post={post} />
             {replies.map(reply => <Reply reply={reply} />)}
         </>
     )
@@ -58,7 +59,7 @@ const forumPage: React.FunctionComponent = () => {
     return (
         <>
             <h1>Test Forun</h1>
-            {posts.map(post => <ForumPost post={post} />)}
+            {posts.map(post => <ForumPostCard post={post} />)}
         </>
     )
 
@@ -132,24 +133,34 @@ const columns: ColDef[] = [
   },
 ];
 
-const rows = [
-  { id: 1, plantName: plantid , username: userid, dateofPost: 1 },
-  { id: 2, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 3, plantName: plantid, username: userid, dateofPost: 1},
-  { id: 4, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 5, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 6, plantName: plantid, username: userid, dateofPost: 1},
-  { id: 7, plantName: plantid, username: userid, dateofPost: 1 },
-  { id: 8, plantName: plantid, username: userid, dateofPost: 1},
-  { id: 9, plantName: plantid, username: userid, dateofPost: 1 },
-];
+// const rows = [
+//   { id: 1, plantName: plantid , username: userid, dateofPost: 1 },
+//   { id: 2, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 3, plantName: plantid, username: userid, dateofPost: 1},
+//   { id: 4, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 5, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 6, plantName: plantid, username: userid, dateofPost: 1},
+//   { id: 7, plantName: plantid, username: userid, dateofPost: 1 },
+//   { id: 8, plantName: plantid, username: userid, dateofPost: 1},
+//   { id: 9, plantName: plantid, username: userid, dateofPost: 1 },
+// ];
 
-export function DataTable() {
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-    </div>
-  );
+// export function DataTable() {
+//   return (
+//     <div style={{ height: 400, width: '100%' }}>
+//       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+//     </div>
+//   );
+// }
+
+async function getUser() {
+    let postsRes = await fetch("/forum/userid");
+    setUser(await postsRes.json());
+}
+
+async function getPlant() {
+    let postsRes = await fetch("/forum/postid");
+    setPlant(await postsRes.json());
 }
 
 interface ForumPostProps {
