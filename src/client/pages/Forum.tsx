@@ -2,7 +2,7 @@
 import React, { useEffect, useState, Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
-import ForumPost from '../components/forum page/forumPostCard';
+import ForumPostCard from '../components/forum page/forumPostCard';
 import Reply from '../components/forum page/reply';
 import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { Comments } from '../components/forum page/Comments';
@@ -28,7 +28,7 @@ const ForumDetails: React.FunctionComponent<RouteComponentProps> = (props) => {
 
     return (
         <>
-            <ForumPost post={post} />
+            <ForumPostCard post={post} />
             {replies.map(reply => <Reply reply={reply} />)}
         </>
     )
@@ -59,7 +59,7 @@ const forumPage: React.FunctionComponent = () => {
     return (
         <>
             <h1>Test Forun</h1>
-            {posts.map(post => <ForumPost post={post} />)}
+            {posts.map(post => <ForumPostCard post={post} />)}
         </>
     )
 
