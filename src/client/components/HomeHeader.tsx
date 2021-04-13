@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <div className={classes.root} id="header">
       
-          <h1 className={classes.appbarTitle}>
+          <h1>
             <span className={classes.colorText}></span>
           </h1>
           
