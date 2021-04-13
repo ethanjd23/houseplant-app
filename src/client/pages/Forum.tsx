@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { CommentItem } from '../components/forum page/CommentItem';
-import { Comments } from '../components/forum page/Comments'
+
+import React, { useEffect, useState, Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
 import ForumPost from '../components/forum page/forumPostCard';
 import Reply from '../components/forum page/reply';
 import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
+import { Comments } from '../components/forum page/Comments';
 
 const Forum: React.FunctionComponent<RouteComponentProps> = ({match}) => {
   return (
@@ -143,9 +143,10 @@ const rows = [
   { id: 7, plantName: "Pink Christmas Cactus", username: "plant Lover 123", dateofPost: 1 },
   { id: 8, plantName: "Pink Christmas Cactus", username: "plant Lover 123", dateofPost: 1},
   { id: 9, plantName: "Pink Christmas Cactus", username: "plant Lover 123", dateofPost: 1 },
+  
 ];
 
-export default function DataTable() {
+export function DataTable() {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
