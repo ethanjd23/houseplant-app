@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom';
 import fetch from 'node-fetch';
-import ForumPost from './ForumPost';
+import ForumPostCard from './forumPostCard';
 import Reply from './Reply';
 
 const ForumDetails: React.FunctionComponent<ForumDetailsProps> = (props) => {
@@ -15,7 +15,7 @@ const ForumDetails: React.FunctionComponent<ForumDetailsProps> = (props) => {
 
     return (
         <>
-            <ForumPost post={post} />
+            <ForumPostCard post={post} />
             {replies.map(reply => <Reply reply={reply} />)}
         </>
     )

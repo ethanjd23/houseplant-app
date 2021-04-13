@@ -3,7 +3,7 @@ import { MysqlResponse } from "./models";
 
 const getUserPlants = async (userid: number) =>
   Query(
-    `SELECT userplants.plant_name AS nickname, plants.name, users.username, users.id AS userid, plants.water, plants.sunlight, plants.id AS plantid
+    `SELECT userplants.plant_name AS nickname, userplants.notes, plants.name, users.username, users.id AS userid, plants.water, plants.sunlight, plants.id AS plantid
       FROM userplants 
       INNER JOIN plants ON userplants.plantid = plants.id
       INNER JOIN users ON userplants.userid = users.id
@@ -15,6 +15,7 @@ const insert = (newPlant: {
   userid: number;
   plantid: number;
   plant_name: string;
+  notes: string;
 }) => Query<MysqlResponse>("INSERT INTO userplants SET ?", newPlant);
 
 const update = (plant_name: string, userid: number, plantid: number) =>
