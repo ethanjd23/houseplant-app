@@ -23,15 +23,15 @@ const useStyles = makeStyles({
     color: '#fff',
   },
   desc: {
-    fontFamily: 'Nunito',
+    fontFamily: 'Montserrat',
     fontSize: '1.1rem',
     color: '#ddd',
   },
 });
 
-export default function ImageCard({ place, checked }) {
+export default function HomeImageCard({ place, checked }) {
   const classes = useStyles();
-
+console.log(place);
   return (
     <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Card className={classes.root}>

@@ -23,4 +23,4 @@ const forumPage: React.FunctionComponent = () => {
     }
 }
 
-export default forumPage
+export default forumPage;

@@ -16,7 +16,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/:id", async (req, res) => {
-  const newPlant: { userid: number; plantid: number; plant_name: string } =
+  const newPlant: { userid: number; plantid: number; plant_name: string; notes: string; } =
     req.body;
   try {
     const posted = await db.userplantsDB.insert(newPlant);

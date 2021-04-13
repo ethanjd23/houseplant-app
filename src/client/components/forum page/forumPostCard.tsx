@@ -64,15 +64,5 @@ interface ForumPostProps {
   };
 }
 
-app.listen(3000, () => {
-  console.log('Go to http://localhost:3000/forum');
- });
-
-const connection = mysql.createPool({
-  host     : 'localhost', 
-  user     : 'users',     
-  password : '',        
-  database : 'mysql'   
-});
 export default ForumPost;
 

@@ -12,14 +12,15 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 345,
+      flexGrow: 1,
     },
     media: {
-      height: 140,
+      height: 280,
     },
     icon: {
       position: "absolute",
@@ -53,6 +54,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
   }, []);
 
   return (
+    <Grid item xs={5}>
     <Card className={classes.root} key={plant.nickname}>
       <CardActionArea>
         <button type="button" onClick={handleOpen} className={classes.icon}>
@@ -67,17 +69,21 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
           <Typography gutterBottom variant="h5" component="h2">
             {plant.nickname}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="overline" color="textSecondary" component="p">
             {plant.name}
           </Typography>
-          <Typography variant="subtitle1" component="p">
+          <Typography variant="subtitle1" color="textSecondary" component="p">
+            {plant.notes}
+          </Typography>          
+          <Typography variant="subtitle2" component="p">
             I need {plant.sunlight} sunlight
           </Typography>
-          <Typography variant="subtitle1" component="p">
+          <Typography variant="subtitle2" component="p">
             {waterGrammar()}
           </Typography>
         </CardContent>
       </CardActionArea>
+      
       {/* <CardActions>
         <Button size="small" color="primary">
           Share
@@ -124,6 +130,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
         </Fade>
       </Modal>
     </Card>
+    </Grid>
   );
 
   function handleOpen() {
@@ -178,6 +185,7 @@ interface UserPlantCardProps {
     water: number;
     sunlight: string;
     plantid: number;
+    notes: string;
   };
 }
 
