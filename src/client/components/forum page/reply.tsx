@@ -1,16 +1,39 @@
+import {
+  Card,
+  CardContent,
+  Grid,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 
+const useStyles = makeStyles((theme) => ({
+  replyCard: {
+    flexGrow: 1,
+    backgroundColor: "#FCF8EC",
+  },
+}));
+
 const Reply: React.FunctionComponent<ReplyProps> = ({ reply }) => {
+  const classes = useStyles();
   return (
-  <>
-  <div className="card" style={{  width: "50vh", marginLeft: "5rem" }} key={String(reply.id)}>
-      <div className="card-body">
-        <h5 className="card-title">{reply.username}</h5>
-        <p className="card-text">{reply.content}</p>
-        <h6 className="card-subtitle mb-2 text-muted">{reply._created}</h6>
-      </div>
-    </div>
-  </>
+    <>
+      <Grid item xs={12}>
+        <Card className={classes.replyCard} key={String(reply.id)}>
+         <CardContent>
+        <Typography variant="h6" component="h2">
+          {reply.content}
+        </Typography>
+        <Typography variant="overline" color="textSecondary" component="p">
+          {reply.username}
+        </Typography>
+        <Typography variant="subtitle2" color="textSecondary" component="p">
+          {reply._created}
+        </Typography>
+        </CardContent>           
+         </Card>
+      </Grid>
+    </>
   );
 };
 

@@ -173,7 +173,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = (props) => {
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <Card className={classes.card}>
-        <CardHeader className={classes.header} title="register App" />
+        <CardHeader className={classes.header} title="Register" />
         <CardContent>
           <div>
             <TextField

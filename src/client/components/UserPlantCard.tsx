@@ -83,15 +83,6 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -142,7 +133,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
   };
 
   async function handleDestroy() {
-    let plantToDestroy = {userid: plant.userid, plantid: plant.plantid }
+    let plantToDestroy = {userplantid: plant.userplantid}
     $.ajax({
       type: "DELETE",
       url: `/api/userplants`,
@@ -150,6 +141,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
       contentType: "application/json" 
     }).then(response => {
       console.log(response);
+      window.location.reload();
       handleClose();
     })
   }
@@ -186,6 +178,7 @@ interface UserPlantCardProps {
     sunlight: string;
     plantid: number;
     notes: string;
+    userplantid: number;
   };
 }
 

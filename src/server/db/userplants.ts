@@ -3,7 +3,7 @@ import { MysqlResponse } from "./models";
 
 const getUserPlants = async (userid: number) =>
   Query(
-    `SELECT userplants.plant_name AS nickname, userplants.notes, plants.name, users.username, users.id AS userid, plants.water, plants.sunlight, plants.id AS plantid
+    `SELECT userplants.plant_name AS nickname, userplants.notes, plants.name, users.username, users.id AS userid, plants.water, plants.sunlight, plants.id AS plantid, userplants.userplantid
       FROM userplants 
       INNER JOIN plants ON userplants.plantid = plants.id
       INNER JOIN users ON userplants.userid = users.id
@@ -24,10 +24,9 @@ const update = (plant_name: string, userid: number, plantid: number) =>
     [plant_name, userid, plantid]
   );
 
-const destroy = (userid: number, plantid: number) =>
-  Query("DELETE FROM userplants where userid = ? AND plantid = ?", [
-    userid,
-    plantid,
+const destroy = (userplantid: number) =>
+  Query("DELETE FROM userplants where userplantid = ?", [
+    userplantid
   ]);
 
 export default {

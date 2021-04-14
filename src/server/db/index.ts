@@ -5,6 +5,7 @@ import plantsDB from './plants'
 import userplantsDB from './userplants';
 import usersDB from './users';
 import forumDB from './forum';
+import requestDB from './requestedplants';
 
 export const pool = mysql.createPool(config.mysql)
 
@@ -21,5 +22,6 @@ export default {
     plantsDB,
     userplantsDB,
     usersDB,
-    forumDB
+    forumDB,
+    requestDB
 }

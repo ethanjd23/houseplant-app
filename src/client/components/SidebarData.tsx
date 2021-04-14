@@ -25,7 +25,7 @@ export const SidebarData = [
   {
     title: 'Request',
     path: '/request',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <IoIcons.IoIosFlower />,
     cName: 'nav-text'
   },
   {

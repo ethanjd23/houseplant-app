@@ -2,18 +2,18 @@ import { Query } from "..";
 import { MysqlResponse } from "../models";
 
 const getAll = async () =>
-  Query(`SELECT posts.id, posts.title, posts.content, posts._created, plants.name, users.username
+  Query(`SELECT posts.id, posts.title, posts.content, posts._created, plants.name, users.username, users.id AS userid
           FROM posts
           INNER JOIN plants ON posts.plantid = plants.id
           INNER JOIN users ON posts.userid = users.id`);
 
 const getOne = async (id: number) =>
   Query(
-    `SELECT posts.id posts.title, posts.content, posts._created, plants.name, users.username
-        FROM posts
+    `SELECT posts.id, posts.title, posts.content, posts._created, plants.name, users.username, users.id AS userid
+		FROM posts
         INNER JOIN plants ON posts.plantid = plants.id
         INNER JOIN users ON posts.userid = users.id
-        WHERE posts.id = ?`,
+        WHERE posts.id = 1`,
     [id]
   );
 

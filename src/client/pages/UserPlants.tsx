@@ -19,8 +19,7 @@ import UserPlantCard from "../components/UserPlantCard";
 import Navbar from "../components/Navbar";
 import Grid from "@material-ui/core/Grid";
 
-
-const useStyles = makeStyles((theme) => ({  
+const useStyles = makeStyles((theme) => ({
   gridRoot: {
     flexGrow: 1,
     marginTop: 2,
@@ -37,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
   addButton: {
     color: "#F50057",
-  }
+  },
 }));
 
-const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
+const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
   const classes = useStyles();
 
   const [userPlants, setUserPlants] = useState([]);
@@ -76,7 +75,7 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
       userid: match.params.userid,
       plantid: plantType,
       plant_name: newNickname,
-      notes: newNote
+      notes: newNote,
     };
     console.log(newPlant);
     $.ajax({
@@ -84,8 +83,9 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
       url: `/api/userplants/${match.params.userid}`,
       data: JSON.stringify(newPlant),
       contentType: "application/json",
-    }).then(() => {      
-      window.location.reload();      
+    }).then(() => {
+      getUserPlants();
+      handleDialogClose();
     });
   };
 
@@ -108,13 +108,12 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
 
   return (
     <>
-      <Navbar />      
+      <Navbar />
       <Grid container className={classes.gridRoot} spacing={3} justify="center">
         {userPlants.map((plant) => (
           <UserPlantCard plant={plant} />
         ))}
-        <Grid container spacing={3} justify="center">
-          <Grid item>
+        <Grid container justify="center">
           <Button
             variant="contained"
             className={classes.addButton}
@@ -122,12 +121,7 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
           >
             ADD NEW PLANT
           </Button>
-          </Grid>
-          <Grid item>
-          <Link to={`/forum/${match.params.userid}`}>
-            <Button variant="contained">Go to forum</Button>
-          </Link>
-          </Grid>
+          <Link to={`/forum`}>Go to forum</Link>
         </Grid>
       </Grid>
       <Dialog
@@ -209,4 +203,4 @@ interface UserPlant {
   sunlight: string;
 }
 
-export default MyPlants;
+export default UserPlants;
