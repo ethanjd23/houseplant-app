@@ -1,9 +1,32 @@
-  import { Button, Container } from "@material-ui/core";
+  import { Button, Container, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import Reply from "./reply";
 
+const useStyles = makeStyles((theme) => ({    
+  gridRoot: {
+    flexGrow: 1,
+    marginTop: 2,
+    marginLeft: 20,
+    marginRight: 25,
+  },
+  button: {
+    display: "block",
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  addButton: {
+    color: "#F50057",
+  }
+}));
+
 const ForumPostCard: React.FunctionComponent<ForumPostProps> = ({ post }) => {
+  const classes = useStyles();
   const [replies, setReplies] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [newContent, setNewContent] = useState("")
 
   useEffect(() => {
     getReplies();
