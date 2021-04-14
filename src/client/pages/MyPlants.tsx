@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
+const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
   const classes = useStyles();
 
   const [userPlants, setUserPlants] = useState([]);
@@ -121,7 +121,9 @@ const UserPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
           >
             ADD NEW PLANT
           </Button>
-          <Link to={`/forum`}>Go to forum</Link>
+          <Link to={`/forum/${match.params.userid}`}>
+            <Button variant="contained">Go to forum</Button>
+          </Link>
         </Grid>
       </Grid>
       <Dialog
@@ -203,4 +205,4 @@ interface UserPlant {
   sunlight: string;
 }
 
-export default UserPlants;
+export default MyPlants;

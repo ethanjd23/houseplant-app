@@ -5,7 +5,9 @@ import {
   GridValueGetterParams,
   GridRowsProp,
 } from "@material-ui/data-grid";
-import useStateWithCallback from 'use-state-with-callback';
+import ForumPostCard from "../components/forum page/forumPostCard";
+import Navbar from "../components/Navbar";
+import { Container } from "@material-ui/core";
 
 
 const Forum2: React.FunctionComponent = () => {    
@@ -27,8 +29,7 @@ const Forum2: React.FunctionComponent = () => {
     { field: "plantName", headerName: "Plant Name", width: 130 },
     {
       field: "created",
-      headerName: "Date of Post",
-      type: "number",
+      headerName: "Date of Post",      
       width: 90,
     },
     {
@@ -47,9 +48,10 @@ const Forum2: React.FunctionComponent = () => {
 
   return (
     <>
-      <div>
-        <DataGrid rows={rowsTest} columns={columns} />
-      </div>
+    <Navbar />
+    <Container>
+      {posts.map((post) => <ForumPostCard post={post} />)}
+      </Container>
     </>
   );
 
@@ -57,16 +59,16 @@ const Forum2: React.FunctionComponent = () => {
     let postRes = await fetch(`/forum/posts/`);
     let post = await postRes.json();
     setPosts(post);
-    let postRowArray = await post.map((post) => ({
-        id: post.id,
-        username: post.username,
-        plantName: post.name,
-        created: post._created,
-        title: post.title,
-        content: post.content,
-      }))
-      console.log(postRowArray);
-    setRows(postRowArray);
+    // let postRowArray = await post.map((post) => ({
+    //     id: post.id,
+    //     username: post.username,
+    //     plantName: post.name,
+    //     created: post._created,
+    //     title: post.title,
+    //     content: post.content,
+    //   }))
+    //   console.log(postRowArray);
+    // setRows(postRowArray);
     
 };
 }

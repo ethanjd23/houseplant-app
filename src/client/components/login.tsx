@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme, MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,14 +9,17 @@ import Button from '@material-ui/core/Button';
 import $ from 'jquery';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import Navbar from './Navbar';
+import { palette } from '@material-ui/system';
 
 
 
 
-
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) => 
   createStyles({
-    container: {
+    
+    
+    
+      container: {
       display: 'flex',
       flexWrap: 'wrap',
       width: 400,
@@ -30,25 +33,26 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center',
       background: '#FCF8EC',
       color: '#5B744F'
-      
+
     },
     card: {
       marginTop: theme.spacing(10)
-    }
-  })
-);
+    },
+
+    
+  }))
 
 //state type
 
 type State = {
   username: string
-  password:  string
+  password: string
   isButtonDisabled: boolean
   helperText: string
   isError: boolean
 };
 
-const initialState:State = {
+const initialState: State = {
   username: '',
   password: '',
   isButtonDisabled: true,
@@ -59,40 +63,40 @@ const initialState:State = {
 type Action = { type: 'setUsername', payload: string }
   | { type: 'setPassword', payload: string }
   | { type: 'setIsButtonDisabled', payload: boolean }
-  | { type: 'loginSuccess', payload: string } 
+  | { type: 'loginSuccess', payload: string }
   | { type: 'loginFailed', payload: string }
   | { type: 'setIsError', payload: boolean };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'setUsername': 
+    case 'setUsername':
       return {
         ...state,
         username: action.payload
       };
-    case 'setPassword': 
+    case 'setPassword':
       return {
         ...state,
         password: action.payload
       };
-    case 'setIsButtonDisabled': 
+    case 'setIsButtonDisabled':
       return {
         ...state,
         isButtonDisabled: action.payload
       };
-    case 'loginSuccess': 
+    case 'loginSuccess':
       return {
         ...state,
         helperText: action.payload,
         isError: false
       };
-    case 'loginFailed': 
+    case 'loginFailed':
       return {
         ...state,
         helperText: action.payload,
         isError: true
       };
-    case 'setIsError': 
+    case 'setIsError':
       return {
         ...state,
         isError: action.payload
@@ -106,10 +110,10 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
 
   useEffect(() => {
     if (state.username.trim() && state.password.trim()) {
-     dispatch({
-       type: 'setIsButtonDisabled',
-       payload: false
-     });
+      dispatch({
+        type: 'setIsButtonDisabled',
+        payload: false
+      });
     } else {
       dispatch({
         type: 'setIsButtonDisabled',
@@ -119,19 +123,20 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
   }, [state.username, state.password]);
 
   const handleLogin = async () => {
-      let user = {
-        email: state.username,
-        password: state.password
-      }
+    let user = {
+      email: state.username,
+      password: state.password
+    }
     $.ajax({
-        type: "POST",
-        url: "/auth/login",
-        data: JSON.stringify(user),
-        contentType: "application/json"
+      type: "POST",
+      url: "/auth/login",
+      data: JSON.stringify(user),
+      contentType: "application/json"
     }).then(response => {
       props.history.push(`/myplants/${response.userid}`);
     }
-    )};
+    )
+  };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.keyCode === 13 || event.which === 13) {
@@ -156,52 +161,56 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
     }
   return (
     <>
-    <Navbar />
-    <form className={classes.container} noValidate autoComplete="off">
-      <Card className={classes.card}>
-        <CardHeader className={classes.header} title="Login App" />
-        <CardContent>
-          <div>
-            <TextField
-              error={state.isError}
-              fullWidth
-              id="username"
-              type="email"
-              label="Username"
-              placeholder="Username"
-              margin="normal"
-              onChange={handleUsernameChange}
-              onKeyPress={handleKeyPress}
-            />
-            <TextField
-              error={state.isError}
-              fullWidth
-              id="password"
-              type="password"
-              label="Password"
-              placeholder="Password"
-              margin="normal"
-              helperText={state.helperText}
-              onChange={handlePasswordChange}
-              onKeyPress={handleKeyPress}
-            />
-          </div>
-        </CardContent>
-        <CardActions>
-          <Button
-            variant="contained"
-            size="large"
-            color="secondary"
-            className={classes.loginBtn}
-            onClick={handleLogin}
-            disabled={state.isButtonDisabled}>
-            Login
+    
+      <Navbar />
+    
+      <form className={classes.container} noValidate autoComplete="off">
+        <Card className={classes.card}>
+          <CardHeader className={classes.header} title="Login App" />
+          <CardContent>
+            <div>
+              <TextField
+                error={state.isError}
+                fullWidth
+                id="username"
+                type="email"
+                label="Username"
+                placeholder="Username"
+                margin="normal"
+                onChange={handleUsernameChange}
+                onKeyPress={handleKeyPress}
+              />
+              <TextField
+                error={state.isError}
+                fullWidth
+                id="password"
+                type="password"
+                label="Password"
+                placeholder="Password"
+                margin="normal"
+                helperText={state.helperText}
+                onChange={handlePasswordChange}
+                onKeyPress={handleKeyPress}
+              />
+            </div>
+          </CardContent>
+          <CardActions>
+            <Button
+              variant="contained"
+              size="large"
+              color="secondary"
+              className={classes.loginBtn}
+              onClick={handleLogin}
+              disabled={state.isButtonDisabled}>
+              Login
           </Button>
-        </CardActions>
-      </Card>
-      <Link to={"/register"}>Not a member? Sign up!</Link>
-    </form>
+          </CardActions>
+        </Card>
+        <Link to={"/register"}>Not a member? Sign up!</Link>
+      </form>
+      
     </>
+  
   );
 }
 

@@ -75,4 +75,8 @@ FLUSH PRIVILEGES;
 
 CREATE USER 'plants'@'localhost' IDENTIFIED BY 'plants123';
 GRANT ALL PRIVILEGES ON plants.* TO 'plants'@'localhost';
+
 ALTER TABLE users ADD UNIQUE(email);
+
+ALTER TABLE userplants
+ADD COLUMN notes TEXT;
