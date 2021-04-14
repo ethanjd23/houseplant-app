@@ -178,6 +178,7 @@ interface UserPlantCardProps {
     sunlight: string;
     plantid: number;
     notes: string;
+    userplantid: number;
   };
 }
 

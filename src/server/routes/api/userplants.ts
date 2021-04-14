@@ -27,9 +27,9 @@ router.post("/:id", async (req, res) => {
 });
 
 router.delete("/", async (req, res) => {
-  let plant: {userid: number; plantid: number;} = req.body;
+  let plant: {userplantid: number;} = req.body;
   try {
-    let result = await db.userplantsDB.destroy(plant.userid, plant.plantid);
+    let result = await db.userplantsDB.destroy(plant.userplantid);
     res.json(await result);
   } catch (error) {
     console.log(error);
