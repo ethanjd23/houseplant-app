@@ -26,7 +26,15 @@ const ForumPostCard: React.FunctionComponent<ForumPostProps> = ({ post }) => {
   const classes = useStyles();
   const [replies, setReplies] = useState([]);
   const [open, setOpen] = useState(false);
-  const [newContent, setNewContent] = useState("")
+  const [newContent, setNewContent] = useState("");
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     getReplies();
