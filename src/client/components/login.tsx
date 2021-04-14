@@ -159,7 +159,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
     <Navbar />
     <form className={classes.container} noValidate autoComplete="off">
       <Card className={classes.card}>
-        <CardHeader className={classes.header} title="Login App" />
+        <CardHeader className={classes.header} title="Login" />
         <CardContent>
           <div>
             <TextField
