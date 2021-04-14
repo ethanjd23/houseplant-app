@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  DataGrid,
-  GridColDef,
-  GridValueGetterParams,
-  GridRowsProp,
-} from "@material-ui/data-grid";
 import ForumPostCard from "../components/forum page/forumPostCard";
 import Navbar from "../components/Navbar";
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, InputLabel, makeStyles, MenuItem, Select, TextField } from "@material-ui/core";

@@ -83,15 +83,6 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
