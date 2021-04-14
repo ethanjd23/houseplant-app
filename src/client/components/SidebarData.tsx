@@ -23,6 +23,12 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
+    title: 'Request',
+    path: '/request',
+    icon: <IoIcons.IoIosFlower />,
+    cName: 'nav-text'
+  },
+  {
     title: 'Login',
     path: '/login',
     icon: <FaIcons.FaSignInAlt/>,
