@@ -113,7 +113,8 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
         {userPlants.map((plant) => (
           <UserPlantCard plant={plant} />
         ))}
-        <Grid container justify="center">
+        <Grid container spacing={3} justify="center">
+          <Grid item>
           <Button
             variant="contained"
             className={classes.addButton}
@@ -121,9 +122,12 @@ const MyPlants: React.FunctionComponent<UserPlantsProps> = ({ match }) => {
           >
             ADD NEW PLANT
           </Button>
+          </Grid>
+          <Grid item>
           <Link to={`/forum/${match.params.userid}`}>
             <Button variant="contained">Go to forum</Button>
           </Link>
+          </Grid>
         </Grid>
       </Grid>
       <Dialog

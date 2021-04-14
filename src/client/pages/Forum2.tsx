@@ -98,7 +98,7 @@ const Forum2: React.FunctionComponent<RouteComponentProps> = ({ match }) => {
           Make New Post
         </Button>
       </Container>
-      <Grid container className={classes.gridRoot} justify="center">
+      <Grid container className={classes.gridRoot} spacing={10} justify="center">
         {posts.map((post) => (
           <ForumPostCard userid={match.params.userid} post={post} />
         ))}

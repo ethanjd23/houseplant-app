@@ -133,7 +133,7 @@ const PlantCard: React.FunctionComponent<UserPlantCardProps> = ({ plant }) => {
   };
 
   async function handleDestroy() {
-    let plantToDestroy = {userid: plant.userid, plantid: plant.plantid }
+    let plantToDestroy = {userplantid: plant.userplantid}
     $.ajax({
       type: "DELETE",
       url: `/api/userplants`,
