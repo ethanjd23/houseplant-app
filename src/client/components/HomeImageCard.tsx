@@ -56,6 +56,7 @@ console.log(place);
             className={classes.desc}
           >
             {place.description}
+            
           </Typography>
         </CardContent>
       </Card>
