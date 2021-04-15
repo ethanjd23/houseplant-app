@@ -188,7 +188,7 @@ const Forum2: React.FunctionComponent<RouteComponentProps> = ({ match }) => {
 
   async function getPosts() {
     let postRes = await fetch(`/forum/posts/`);
-    let post = await postRes.json();
+    let post = await postRes.json();    
     setPosts(post);
   }
 
