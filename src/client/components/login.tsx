@@ -172,8 +172,8 @@ const Login: React.FunctionComponent<RouteComponentProps> = (props) => {
               fullWidth
               id="username"
               type="email"
-              label="Username"
-              placeholder="Username"
+              label="E-mail"
+              placeholder="E-mail"
               margin="normal"
               onChange={handleUsernameChange}
               onKeyPress={handleKeyPress}
